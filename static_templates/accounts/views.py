@@ -4,9 +4,8 @@ from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
-
 def landing(request):
-    return render(request, 'landing.html')
+    return render(request, 'home.html')
 
 
 def login_view(request):
@@ -19,7 +18,7 @@ def login_view(request):
             return redirect('dashboard')
         else:
             messages.error(request, 'Invalid username or password.')
-    return render(request, 'login.html')
+    return render(request, 'accounts/login.html')
 
 
 def register_view(request):
@@ -35,12 +34,12 @@ def register_view(request):
             User.objects.create_user(username=username, password=password)
             messages.success(request, 'Account created. Please log in.')
             return redirect('login')
-    return render(request, 'register.html')
+    return render(request, 'accounts/register.html')
 
 
 @login_required
 def dashboard(request):
-    return render(request, 'dashboard.html')
+    return render(request, 'accounts/dashboard.html')
 
 
 def logout_view(request):
