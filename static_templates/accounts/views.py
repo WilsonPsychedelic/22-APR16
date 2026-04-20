@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
 def landing(request):
-    return render(request, 'home.html')
+    return render(request, 'accounts/landing.html')
 
 
 def login_view(request):
